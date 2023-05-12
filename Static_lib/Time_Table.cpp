@@ -24,7 +24,7 @@ Time_Table::~Time_Table()
 {
 	
 	for (int i = 0; i < COL; i++) {
-		delete Table[i];
+		delete [] Table[i];
 	}
 	
 }
