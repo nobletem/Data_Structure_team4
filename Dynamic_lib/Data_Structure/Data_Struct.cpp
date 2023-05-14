@@ -51,17 +51,17 @@ void Queue::addQueue(int value) //큐가 꽉 차있는지 확인 후 큐에 원�
 
 unsigned int Queue::deleteQueue() //큐가 비어있는지 확인 후 원소 제거 
 {
-	int frontelement = queue[front];
 	if (Qempty())
 	{
 		cout << "큐가 모두 비어있습니다"; //예외처리
-		return frontelement;
+		return 0;
 	}
 	else
 	{
+		int frontelement = queue[front];
 		front = (front + 1) % MAX_QUEUE_SIZE;
 		size--;
-		return queue[front];
+		return frontelement;
 	}
 }
 
