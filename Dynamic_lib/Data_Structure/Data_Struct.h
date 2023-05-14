@@ -5,7 +5,7 @@ using namespace std;
 class Queue
 {
 private:
-	int* queue;
+	unsigned int* queue;
 	unsigned int size;
 	int front;
 	int rear;
