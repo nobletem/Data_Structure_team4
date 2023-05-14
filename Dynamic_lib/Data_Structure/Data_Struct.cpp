@@ -7,7 +7,6 @@ using namespace std;
 
 Queue::Queue() //큐 객체를 생성할 때 호출되는 함수/큐가 비어있음을 의미하도록 변수 초기화
 {
-	this->maxQueueSiz = 1000;
 	this->front = -1;
 	this->rear = -1;
 	this->size = 0;
