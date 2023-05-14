@@ -35,7 +35,7 @@ void Queue::addQueue(int value) //큐가 꽉 차있는지 확인 후 큐에 원�
 {
 	if (Qfull() == true)
 	{
-		throw "큐가 모두 차있습니다"; //예외처리
+		cout<<"큐가 모두 차있습니다"; //예외처리
 		return;
 	}
 
@@ -51,15 +51,18 @@ void Queue::addQueue(int value) //큐가 꽉 차있는지 확인 후 큐에 원�
 
 unsigned int Queue::deleteQueue() //큐가 비어있는지 확인 후 원소 제거 
 {
+	int frontelement = queue[front];
 	if (Qempty())
 	{
-		throw "큐가 모두 비어있습니다"; //예외처리
-		return;
+		cout << "큐가 모두 비어있습니다"; //예외처리
+		return frontelement;
 	}
-
-	front = (front + 1) % MAX_QUEUE_SIZE;
-	size--;
-	return queue[front];
+	else
+	{
+		front = (front + 1) % MAX_QUEUE_SIZE;
+		size--;
+		return queue[front];
+	}
 }
 
 Queue::~Queue() //큐 객체 소멸 함수 
