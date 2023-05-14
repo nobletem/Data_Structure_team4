@@ -1,89 +1,69 @@
 //Queue
 #include <iostream>
+#include "params.h"
+#include "Data_Struct.h"
 using namespace std;
 
-class Queue
+
+Queue::Queue() //큐 객체를 생성할 때 호출되는 함수/큐가 비어있음을 의미하도록 변수 초기화
 {
-private:
-	int* queue;
-	int size;
-	int front;
-	int rear;
-	int maxQueueSize;
+	this->front = -1;
+	this->rear = -1;
+	this->size = 0;
+	queue = new unsigned int[MAX_QUEUE_SIZE]; //큐의 원소를 저장할 동적 배열 
+}
 
-public:
-	Queue(int maxQueueSize) : maxQueueSize(maxQueueSize), front(-1), rear(-1), size(0) //큐 객체를 생성할 때 호출되는 함수/큐가 비어있음을 의미하도록 변수 초기화
+bool Queue::Qempty() //큐가 비어있는지 확인할 함수
+{
+	return size == 0;
+}
+
+bool Queue::Qfull() //큐가 차있는지 확인할 함수
+{
+	if (size == MAX_QUEUE_SIZE)
+		return true;
+	else
+		return false;
+}
+
+unsigned int Queue::getSize() 
+{
+	return size;
+}
+
+void Queue::addQueue(int value) //큐가 꽉 차있는지 확인 후 큐에 원소 추가 
+{
+	if (Qfull() == true)
 	{
-		queue = new int[maxQueueSize]; //큐의 원소를 저장할 동적 배열 
+		throw "큐가 모두 차있습니다"; //예외처리
+		return;
 	}
 
-	bool Qempty() //큐가 비어있는지 확인할 함수
+	rear = (rear + 1) % MAX_QUEUE_SIZE;
+	queue[rear] = value;
+	
+	if (Qempty())
 	{
-		return size == 0;
+		front = rear;
+	}
+	size++;
+}
+
+unsigned int Queue::deleteQueue() //큐가 비어있는지 확인 후 원소 제거 
+{
+	if (Qempty())
+	{
+		throw "큐가 모두 비어있습니다"; //예외처리
+		return;
 	}
 
-	bool Qfull() //큐가 차있는지 확인할 함수
-	{
-		if (size == maxQueueSize)
-			return true;
-		else
-			return false;
-	}
+	front = (front + 1) % MAX_QUEUE_SIZE;
+	size--;
+	return queue[front];
+}
 
-	int getSize() 
-	{
-		return size;
-	}
+Queue::~Queue() //큐 객체 소멸 함수 
+{
+	delete[] queue;
+}
 
-	void addQueue(int value) //큐가 꽉 차있는지 확인 후 큐에 원소 추가 
-	{
-		if (Qfull() == true)
-		{
-			throw "큐가 모두 차있습니다"; //예외처리
-			return;
-		}
-
-		rear = (rear + 1) % maxQueueSize;
-		queue[rear] = value;
-		
-		if (Qempty())
-		{
-			front = rear;
-		}
-		size++;
-	}
-
-	void subQueue() //큐가 비어있는지 확인 후 원소 제거 
-	{
-		if (Qempty())
-		{
-			throw "큐가 모두 비어있습니다"; //예외처리
-			return;
-		}
-
-		front = (front + 1) % maxQueueSize;
-		size--;
-		
-		if (Qempty())
-		{
-			front = -1;
-			rear = -1;
-		}
-	}
-
-	int frontIndex() //큐가 비어있는지 확인 후 맨 앞 원소 반환
-	{
-		if (Qempty())
-		{
-			throw "큐가 모두 비어있습니다."; //예외처리
-			return 0;
-		}
-		else
-			return queue[front];
-	}
-
-	~Queue() //큐 객체 소멸 함수 
-	{
-		delete[] queue;
-	}
-};
