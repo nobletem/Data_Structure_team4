@@ -12,7 +12,7 @@ class Time_Table {
 private:
 	bool* Table[COL];
 	unsigned int Start_t, End_t, Unit_t;
-	int row;
+	unsigned int row;
 public:
 	void Gen_Time_Table();
 	~Time_Table();
