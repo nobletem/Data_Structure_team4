@@ -19,7 +19,7 @@ public:
 
 	bool Qempty() //큐가 비어있는지 확인할 함수
 	{
-		return size = 0;
+		return size == 0;
 	}
 
 	bool Qfull() //큐가 차있는지 확인할 함수
