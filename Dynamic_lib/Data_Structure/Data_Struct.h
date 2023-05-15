@@ -1,3 +1,6 @@
+#ifndef DATA_STRUCT
+#define DATA_STRUCT
+
 #include <iostream>
 
 using namespace std;
@@ -26,3 +29,16 @@ public:
 	~Queue(); //큐 객체 소멸 함수 
 
 };
+
+class SortandSelect {
+private:
+    void swap(int* int1, int* int2);
+    int partition(int arr[], int left, int right);
+    void merge(int array[], int const left, int const mid, int const right);
+public:
+    void quickSort(int arr[], int left, int right);
+    void mergeSort(int array[], int const left, int const right);
+    int quickSelect(int arr[], int left, int right, int k);
+};
+
+#endif
