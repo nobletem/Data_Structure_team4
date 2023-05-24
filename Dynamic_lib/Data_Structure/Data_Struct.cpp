@@ -1,76 +1,156 @@
-//Queue
 #include <iostream>
 #include "params.h"
 #include "Data_Struct.h"
 using namespace std;
 
 
+/******************************************************************
+* Queue
+******************************************************************/
+
 Queue::Queue() //큐 객체를 생성할 때 호출되는 함수/큐가 비어있음을 의미하도록 변수 초기화
-	{
-	this->front = -1;
-	this->rear = -1;
-	this->size = 0;
-	queue = new unsigned int[MAX_QUEUE_SIZE]; //큐의 원소를 저장할 동적 배열 
-	}
+{
+    this->front = -1;
+    this->rear = -1;
+    this->size = 0;
+    queue = new unsigned int[MAX_QUEUE_SIZE]; //큐의 원소를 저장할 동적 배열 
+}
 
 bool Queue::Qempty() //큐가 비어있는지 확인할 함수
-	{
-		return size == 0;
-	}
+{
+    return size == 0;
+}
 
 bool Queue::Qfull() //큐가 차있는지 확인할 함수
-	{
-	if (size == MAX_QUEUE_SIZE)
-			return true;
-		else
-			return false;
-	}
+{
+    if (size == MAX_QUEUE_SIZE)
+        return true;
+    else
+        return false;
+}
 
-unsigned int Queue::getSize() 
-	{
-		return size;
-	}
+unsigned int Queue::getSize()
+{
+    return size;
+}
 
 void Queue::addQueue(int value) //큐가 꽉 차있는지 확인 후 큐에 원소 추가 
-	{
-		if (Qfull() == true)
-		{
-		cout<<"큐가 모두 차있습니다"; //예외처리
-			return;
-		}
+{
+    if (Qfull() == true)
+    {
+        cout << "큐가 모두 차있습니다"; //예외처리
+        return;
+    }
 
-	rear = (rear + 1) % MAX_QUEUE_SIZE;
-		queue[rear] = value;
-		
-		if (Qempty())
-		{
-			front = rear;
-		}
-		size++;
-	}
+    rear = (rear + 1) % MAX_QUEUE_SIZE;
+    queue[rear] = value;
+
+    if (Qempty())
+    {
+        front = rear;
+    }
+    size++;
+}
 
 unsigned int Queue::deleteQueue() //큐가 비어있는지 확인 후 원소 제거 
-	{
-		if (Qempty())
-		{
-		cout << "큐가 모두 비어있습니다"; //예외처리
-			return 0;
-		}
-		else
-	{
-		int frontelement = queue[front];
-		front = (front + 1) % MAX_QUEUE_SIZE;
-		size--;
-		return frontelement;
-	}
+{
+    if (Qempty())
+    {
+        cout << "큐가 모두 비어있습니다"; //예외처리
+        return 0;
+    }
+    else
+    {
+        int frontelement = queue[front];
+        front = (front + 1) % MAX_QUEUE_SIZE;
+        size--;
+        return frontelement;
+    }
 }
 
 Queue::~Queue() //큐 객체 소멸 함수 
 {
-	delete[] queue;
+    delete[] queue;
 }
 
-//Quick Sort
+
+/******************************************************************
+* s_Queue
+******************************************************************/
+
+s_Queue::s_Queue() //큐 객체를 생성할 때 호출되는 함수/큐가 비어있음을 의미하도록 변수 초기화
+{
+    this->front = -1;
+    this->rear = -1;
+    this->size = 0;
+    queue = new string[MAX_QUEUE_SIZE]; //큐의 원소를 저장할 동적 배열 
+}
+
+bool s_Queue::Qempty() //큐가 비어있는지 확인할 함수
+{
+    return size == 0;
+}
+
+bool s_Queue::Qfull() //큐가 차있는지 확인할 함수
+{
+    if (size == MAX_QUEUE_SIZE)
+        return true;
+    else
+        return false;
+}
+
+unsigned int s_Queue::getSize()
+{
+    return size;
+}
+
+void s_Queue::addQueue(string value) //큐가 꽉 차있는지 확인 후 큐에 원소 추가 
+{
+    if (Qfull() == true)
+    {
+        cout << "큐가 모두 차있습니다"; //예외처리
+        return;
+    }
+
+    rear = (rear + 1) % MAX_QUEUE_SIZE;
+    queue[rear] = value;
+
+    if (Qempty())
+    {
+        front = rear;
+    }
+    size++;
+}
+
+string s_Queue::deleteQueue() //큐가 비어있는지 확인 후 원소 제거 
+{
+    if (Qempty())
+    {
+        string a;
+        cout << "큐가 모두 비어있습니다"; //예외처리
+        return a;
+    }
+    else
+    {
+        string frontelement = queue[front];
+        front = (front + 1) % MAX_QUEUE_SIZE;
+        size--;
+        return frontelement;
+    }
+}
+
+s_Queue::~s_Queue() //큐 객체 소멸 함수 
+{
+    delete[] queue;
+}
+
+
+
+/******************************************************************
+* Sort and Select
+******************************************************************/
+// Quick Sort
+
 void SortandSelect::swap(int* int1, int* int2) { // 포인터를 사용한 swap 함수
     int temp = *int1;
     *int1 = *int2;
@@ -93,7 +173,7 @@ int SortandSelect::partition(int arr[], int left, int right) {
 
 void SortandSelect::quickSort(int arr[], int left, int right) { // quickSort 함수 선언
     if (left < right) {
-         int index = partition(arr, left, right); // index 선언과 함께 index를 맞는 위치에 정렬
+        int index = partition(arr, left, right); // index 선언과 함께 index를 맞는 위치에 정렬
         quickSort(arr, left, index - 1);  // index 전에 있는 원소 정렬
         quickSort(arr, index + 1, right); // index 후에 있는 원소 정렬
     }
