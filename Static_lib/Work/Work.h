@@ -19,10 +19,12 @@ public:
 	bool input_priority(int priority);
 	string get_work_n();
 	unsigned int get_work_data(int index);
-	int get_priority();				
+	int get_priority();
 	int get_size();					// work_n과 priority queue에 담겨있는 원소 개수 출력
 	int work_data_size(int index);	// work_data[i]에 담겨 있는 데이터의 개수 출력
-	void work_data_divide(unsigned int data);
+	unsigned int get_day(unsigned int data);
+	unsigned int get_start_t(unsigned int data);
+	unsigned int get_end_t(unsigned int data);
 	~Work();
 };
 

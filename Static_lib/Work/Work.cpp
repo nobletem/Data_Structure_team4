@@ -44,7 +44,7 @@ bool Work::input_work_data(int index, unsigned char D, unsigned char s_h, unsign
 
 bool Work::input_priority(int priority)
 {
-	if (priority < 0 && priority > MAX_Work_Name) return false;
+	if (priority <= 0 && priority > MAX_Work_Name) return false;
 	this->priority.addQueue(priority);
 	return true;
 }
@@ -74,14 +74,19 @@ int Work::work_data_size(int index)
 	return this->work_data[index].getSize();
 }
 
-void Work::work_data_divide(unsigned int data)
-{
-	unsigned int temp[5];
-	temp[0] = (unsigned char)(data >> 22);
-	temp[1] = (unsigned char)((data >> 17)&0x1F);
-	temp[2] = (unsigned char)((data >> 11)&0x3F);
-	temp[3] = (unsigned char)((data >> 6)&0x1F);
-	temp[4] = (unsigned char)((data &0x3F));
+/*
 	cout << "Day : " << temp[0] << "s_h : " << temp[1] << " s_m : " << temp[2] << " e_h : " << temp[3] << " e_m : " << temp[4] << endl;
-}
 
+*/
+unsigned int Work::get_day(unsigned int data)
+{
+	return (data >> 22);
+}
+unsigned int Work::get_start_t(unsigned int data)
+{
+	return (((data >> 17) & 0x1F) * 60) + ((data >> 11) & 0x3F);
+}
+unsigned int Work::get_end_t(unsigned int data)
+{
+	return (((data >> 6) & 0x1F) * 60) + ((data & 0x3F));
+}
