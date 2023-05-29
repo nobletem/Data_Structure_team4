@@ -18,7 +18,7 @@ int main()
 		cout << a.deleteQueue() << endl;
 	}
 	*/
-	
+	/*
 	// Time_Table Test
 	Time_Table a;
 	a.input_start_t(9);
@@ -35,9 +35,9 @@ int main()
 		}
 		cout << endl;
 	}
-	
+	*/
 
-	/*
+	
 	// Work Test
 	Work a;
 	string str[10];
@@ -45,8 +45,8 @@ int main()
 	int t;
 	unsigned int s;
 
-	cout << "Input work name 6 " << endl;
-	for (int i = 0; i < 3; i++) { // 일 이름 10개 입력
+	cout << "Input work name 3 " << endl;
+	for (int i = 0; i < 3; i++) { // 일 이름 3개 입력
 		cout << ">>  ";
 		getline(cin, str[i]);
 		cout << a.input_work_n(str[i]) << endl;
@@ -59,7 +59,7 @@ int main()
 		cout << a.get_work_n() << endl;
 	}
 	cout << "=========================" << endl;
-
+	cout << "우선도 입력 ";
 	for (int i = 0; i < 3; i++) {
 		cout << " >> ";
 		cin >> p[i];
@@ -90,7 +90,7 @@ int main()
 			cout << "Day : " << a.get_day(s) << "s_h : " << a.get_start_t(s) << " e_h : " << a.get_end_t(s) << endl;
 		}
 	}
-	*/
+	
 
 	/*
 	* priority queue test
