@@ -2,8 +2,13 @@
 #define DATA_STRUCT
 
 #include <iostream>
+#include "Params.h"
 
 using namespace std;
+
+/******************************************************************
+* Queue
+******************************************************************/
 
 class Queue
 {
@@ -30,6 +35,9 @@ public:
 
 };
 
+/******************************************************************
+* s_Queue
+******************************************************************/
 class s_Queue
 {
 private:
@@ -54,6 +62,54 @@ public:
 	~s_Queue(); //큐 객체 소멸 함수 
 
 };
+
+/******************************************************************
+* Priotrity_Queue
+******************************************************************/
+// Node
+struct Node {
+private:
+    unsigned int key;
+public:
+	Node();
+
+    Node(unsigned int _key );
+
+    unsigned int getKey();
+
+    void setKey(unsigned int _key);
+};
+
+// Min heap
+class MinHeap {
+private:
+    Node node[MAX_ELEMENT];
+    int size;  
+public:
+    MinHeap();
+
+    Node& getParent(int index);
+
+    Node& getLeftChild(int index);
+
+    Node& getRightChild(int index);
+
+    bool isEmpty();
+
+    bool isFull();
+
+    bool insert(unsigned int key);
+
+	unsigned int remove();
+
+};
+// HeapSort
+
+void heapSort(unsigned int a[], int n);
+
+/******************************************************************
+* SortandSelect
+******************************************************************/
 
 class SortandSelect {
 private:
