@@ -6,6 +6,6 @@
 #define MAX_Work_Name 50
 #define MAX_Priority 50
 #define MAX_Work_data 100
+#define MAX_ELEMENT 50
 
 #endif
-
