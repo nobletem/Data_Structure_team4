@@ -122,4 +122,16 @@ public:
 	int quickSelect(int arr[], int left, int right, int k);
 };
 
+//우선순위 큐
+class PriorityQueue
+{
+private:
+	Queue queue;
+public:
+	void pqaddqueue(int value); //값을 큐에 추가
+	unsigned int pqdequeue(); //함수는 큐에서 값을 제거하며 반환
+	int pqgetSize(); //큐의 크기를 반환
+	bool pqempty(); //함수가 비어있는지의 여부 확인
+	~PriorityQueue();
+};
 #endif
