@@ -1,1 +1,126 @@
 한이소 두이소
+
+--파이썬 GUI 코드--
+(개발 취소)
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+
+# 첫 번째 창 UI
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(645, 394)
+        Dialog.setMouseTracking(False)
+        Dialog.setTabletTracking(False)
+        Dialog.setSizeGripEnabled(True)
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(80, 280, 111, 61))
+        self.pushButton.setCheckable(False)
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_2.setGeometry(QtCore.QRect(260, 280, 111, 61))
+        self.pushButton_2.setCheckable(False)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_3.setGeometry(QtCore.QRect(430, 280, 111, 61))
+        self.pushButton_3.setCheckable(False)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(250, 30, 151, 31))
+        font = QtGui.QFont()
+        font.setPointSize(18)  # '첫 번째 창 내용(시간표 GUI Test) 폰트 크기 수정'
+        self.label.setFont(font)  # 폰트 설정
+        self.label.setAlignment(QtCore.Qt.AlignCenter)  # 텍스트 가운데 정렬
+        self.label.setObjectName("label")
+
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "시간표 GUI Test"))
+        self.pushButton.setText(_translate("Dialog", "실행"))
+        self.pushButton_2.setText(_translate("Dialog", "필요시 구현(수정)"))
+        self.pushButton_3.setText(_translate("Dialog", "필요시 구현(삭제)"))
+        self.label.setText(_translate("Dialog", "GUI test"))
+
+# 두 번째 창 UI
+class Ui_SecondWindow(object):
+    def setupUi(self, SecondWindow):
+        SecondWindow.setObjectName("SecondWindow")
+        SecondWindow.resize(400, 300)
+
+        self.label_lecture = QtWidgets.QLabel(SecondWindow)
+        self.label_lecture.setGeometry(QtCore.QRect(50, 50, 300, 30))
+        self.label_lecture.setObjectName("label_lecture")
+        self.lineEdit_lecture = QtWidgets.QLineEdit(SecondWindow)
+        self.lineEdit_lecture.setGeometry(QtCore.QRect(150, 50, 150, 30))
+        self.lineEdit_lecture.setObjectName("lineEdit_lecture")
+
+        self.label_day = QtWidgets.QLabel(SecondWindow)
+        self.label_day.setGeometry(QtCore.QRect(50, 100, 300, 30))
+        self.label_day.setObjectName("label_day")
+        self.lineEdit_day = QtWidgets.QLineEdit(SecondWindow)
+        self.lineEdit_day.setGeometry(QtCore.QRect(150, 100, 150, 30))
+        self.lineEdit_day.setObjectName("lineEdit_day")
+
+        self.label_start_time = QtWidgets.QLabel(SecondWindow)
+        self.label_start_time.setGeometry(QtCore.QRect(50, 150, 300, 30))
+        self.label_start_time.setObjectName("label_start_time")
+        self.lineEdit_start_time = QtWidgets.QLineEdit(SecondWindow)
+        self.lineEdit_start_time.setGeometry(QtCore.QRect(150, 150, 150, 30))
+        self.lineEdit_start_time.setObjectName("lineEdit_start_time")
+
+        self.label_end_time = QtWidgets.QLabel(SecondWindow)
+        self.label_end_time.setGeometry(QtCore.QRect(50, 200, 300, 30))
+        self.label_end_time.setObjectName("label_end_time")
+        self.lineEdit_end_time = QtWidgets.QLineEdit(SecondWindow)
+        self.lineEdit_end_time.setGeometry(QtCore.QRect(150, 200, 150, 30))
+        self.lineEdit_end_time.setObjectName("lineEdit_end_time")
+
+        self.pushButton_save = QtWidgets.QPushButton(SecondWindow)
+        self.pushButton_save.setGeometry(QtCore.QRect(50, 250, 111, 31))
+        self.pushButton_save.setObjectName("pushButton_save")
+        self.pushButton_exit = QtWidgets.QPushButton(SecondWindow)
+        self.pushButton_exit.setGeometry(QtCore.QRect(220, 250, 111, 31))
+        self.pushButton_exit.setObjectName("pushButton_exit")
+
+        self.retranslateUi(SecondWindow)
+        QtCore.QMetaObject.connectSlotsByName(SecondWindow)
+
+        self.pushButton_exit.clicked.connect(QtWidgets.QApplication.quit)
+        # "종료" 버튼 클릭 시 프로그램 종료
+
+    def retranslateUi(self, SecondWindow):
+        _translate = QtCore.QCoreApplication.translate
+        SecondWindow.setWindowTitle(_translate("SecondWindow", "test - 실행창"))
+        self.label_lecture.setText(_translate("SecondWindow", "정보1(강의):"))
+        self.label_day.setText(_translate("SecondWindow", "정보2(요일):"))
+        self.label_start_time.setText(_translate("SecondWindow", "정보3(시작 시간):"))
+        self.label_end_time.setText(_translate("SecondWindow", "정보4(끝 시간):"))
+        self.pushButton_save.setText(_translate("SecondWindow", "미구현(저장)"))
+        self.pushButton_exit.setText(_translate("SecondWindow", "종료"))
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+
+    ui = Ui_Dialog()
+    ui.setupUi(Dialog)
+
+    # '실행' 버튼 클릭 시 두 번째 창 열기
+    def open_second_window():
+        Dialog.close()  # 첫 번째 창 닫기
+
+        # 두 번째 창 생성
+        SecondWindow = QtWidgets.QDialog()
+        ui_second = Ui_SecondWindow()
+        ui_second.setupUi(SecondWindow)
+        SecondWindow.exec_()
+
+    ui.pushButton.clicked.connect(open_second_window)
+
+    Dialog.show()
+    sys.exit(app.exec_())
