@@ -364,7 +364,7 @@ int SortandSelect::quickSelect(int arr[], int left, int right, int k) {
     return -1; // k가 배열 index보다 클 경우
 }
 
-//우선순위 큐
+//function4 - 사용된 
 void PriorityQueue::pqaddqueue(int value)
 {
     queue.addQueue(value);
