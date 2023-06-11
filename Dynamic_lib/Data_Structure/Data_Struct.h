@@ -122,7 +122,7 @@ public:
 	int quickSelect(int arr[], int left, int right, int k);
 };
 
-//우선순위 큐
+//function4 - 사용된 
 class PriorityQueue
 {
 private:
