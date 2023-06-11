@@ -25,6 +25,7 @@ public:
 	unsigned int get_day(unsigned int data);
 	unsigned int get_start_t(unsigned int data);
 	unsigned int get_end_t(unsigned int data);
+	unsigned int get_data(int i);
 	~Work();
 };
 

@@ -90,3 +90,8 @@ unsigned int Work::get_end_t(unsigned int data)
 {
 	return (((data >> 6) & 0x1F) * 60) + ((data & 0x3F));
 }
+
+unsigned int Work::get_data(int i)
+{
+	return this->work_data[i].deleteQueue();
+}
