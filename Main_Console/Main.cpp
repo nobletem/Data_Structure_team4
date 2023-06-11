@@ -109,12 +109,7 @@ int main()
 
 
 			if (work.input_work_data(i, temp[0], temp[1], temp[2], temp[3], temp[4])) cout << "Success" << endl;
-
-			cout << work.get_day(i) << endl;
-			cout << work.get_start_t(i) << endl;
-			cout << work.get_end_t(i) << endl;
 			data = work.get_data(i);
-			cout << data << endl;
 			if (time_table.input_work(work.get_day(data), work.get_start_t(data), work.get_end_t(data))) cout << "Success" << endl;
 		}
 
