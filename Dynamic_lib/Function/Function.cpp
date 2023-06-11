@@ -1,6 +1,9 @@
 #include <iostream>
 #include "Function.h"
 #include <vector>
+#include "data_struct.h"
+#include "params.h"
+
 
 using namespace std;
 
