@@ -363,3 +363,29 @@ int SortandSelect::quickSelect(int arr[], int left, int right, int k) {
     }
     return -1; // k가 배열 index보다 클 경우
 }
+
+//우선순위 큐
+void PriorityQueue::pqaddqueue(int value)
+{
+    queue.addQueue(value);
+}
+
+unsigned int PriorityQueue::pqdequeue()
+{
+    return queue.deleteQueue();
+}
+
+int PriorityQueue::pqgetSize()
+{
+    return queue.getSize();
+}
+
+bool PriorityQueue::pqempty()
+{
+    return queue.Qempty();
+}
+
+PriorityQueue::~PriorityQueue()
+{
+    queue.~Queue();
+}
